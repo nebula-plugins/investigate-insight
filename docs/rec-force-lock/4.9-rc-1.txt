@@ -1,0 +1,28 @@
+
+> Task :dependencyInsight
+com.google.guava:guava:13.0
+   variant "default" [
+      org.gradle.status = release (not requested)
+      Requested attributes not found in the selected variant:
+         org.gradle.usage  = java-api
+   ]
+   Selection reasons:
+      - Was requested
+      - Selected by rule : com.google.guava:guava locked to 13.0 by nebula.dependency-lock
+
+com.google.guava:guava -> 13.0
+\--- compileClasspath
+
+A web-based, searchable dependency report is available by adding the --scan option.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains 'locked'
+- contains guava -> 13.0 [locked]
+- contains 'forced/Forced'

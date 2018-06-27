@@ -1,0 +1,48 @@
+
+> Task :dependencyInsight
+org.slf4j:slf4j-api:1.7.2
+   variant "default+runtime" [
+      org.gradle.status = release (not requested)
+      Requested attributes not found in the selected variant:
+         org.gradle.usage  = java-api
+   ]
+   Selection reasons:
+      - Was requested : didn't match versions 1.8.0-beta2, 1.8.0-beta1, 1.8.0-beta0, 1.8.0-alpha2, 1.8.0-alpha1, 1.8.0-alpha0, 1.7.25, 1.7.24, 1.7.23, 1.7.22, 1.7.21, 1.7.20, 1.7.19, 1.7.18, 1.7.16, 1.7.15, 1.7.14, 1.7.13, 1.7.12, 1.7.11, 1.7.10, 1.7.9, 1.7.8, 1.7.7, 1.7.6, 1.7.5, 1.7.4, 1.7.3
+      - Selected by rule : aligned to 1.7.2 by align-slf4j
+
+org.slf4j:slf4j-api:1.7.2
+\--- org.slf4j:slf4j-simple:1.7.2
+     \--- compileClasspath
+
+org.slf4j:slf4j-api -> 1.7.2
+\--- compileClasspath
+
+org.slf4j:slf4j-simple:1.7.2
+   variant "default" [
+      org.gradle.status = release (not requested)
+      Requested attributes not found in the selected variant:
+         org.gradle.usage  = java-api
+   ]
+   Selection reasons:
+      - Was requested
+      - Selected by rule : org.slf4j:slf4j-simple locked to 1.7.2 by nebula.dependency-lock
+
+org.slf4j:slf4j-simple:1.7.20 -> 1.7.2
+\--- compileClasspath
+
+A web-based, searchable dependency report is available by adding the --scan option.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains org.slf4j:slf4j-api.*-> 1.7.2 [align & lock]
+- contains org.slf4j:slf4j-simple.*-> 1.7.2 [align & lock]
+- contains 'aligned to' or 'By conflict resolution'
+- contains locked [align & lock]
+
+completed assertions

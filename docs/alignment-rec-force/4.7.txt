@@ -1,0 +1,30 @@
+
+> Task :dependencyInsightEnhanced
+org.slf4j:slf4j-api:1.5.0 (forced)
+\--- org.slf4j:slf4j-simple:1.5.0
+     \--- compileClasspath
+
+org.slf4j:slf4j-api -> 1.5.0
+\--- compileClasspath
+
+org.slf4j:slf4j-simple:1.5.0 (aligned to 1.5.0 by align-slf4j, forced)
+
+org.slf4j:slf4j-simple:1.7.20 -> 1.5.0
+\--- compileClasspath
+
+nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsightAlignment/alignment-rec-force-4-7/dependency-recommendations.properties
+nebula.dependency-lock locked with: dependencies.lock
+nebula.resolution-rules uses: local-rules.json
+nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
+
+> Task :dependencyInsight SKIPPED
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains org.slf4j:slf4j-api.*-> 1.5.0 [align & force]
+- contains org.slf4j:slf4j-simple.*-> 1.5.0 [align & force]
+- contains 'forced' or 'Forced'
+
+completed assertions

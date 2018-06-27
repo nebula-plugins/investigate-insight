@@ -1,0 +1,45 @@
+
+> Task :dependencyInsight
+org.slf4j:slf4j-api:1.7.20
+   variant "default+runtime" [
+      org.gradle.status = release (not requested)
+      Requested attributes not found in the selected variant:
+         org.gradle.usage  = java-api
+   ]
+   Selection reasons:
+      - Was requested
+      - By conflict resolution : between versions 1.6.0 and 1.7.20
+
+org.slf4j:slf4j-api:1.7.20
+\--- org.slf4j:slf4j-simple:1.7.20
+     \--- compileClasspath
+
+org.slf4j:slf4j-api:1.6.0 -> 1.7.20
+\--- compileClasspath
+
+org.slf4j:slf4j-simple:1.7.20
+   variant "default" [
+      org.gradle.status = release (not requested)
+      Requested attributes not found in the selected variant:
+         org.gradle.usage  = java-api
+   ]
+
+org.slf4j:slf4j-simple:1.7.20
+\--- compileClasspath
+
+A web-based, searchable dependency report is available by adding the --scan option.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains org.slf4j:slf4j-api:1.6.0 -> 1.7.20 [align & static]
+- contains org.slf4j:slf4j-simple:1.7.20 [align & static]
+- contains 'aligned to' or 'By conflict resolution'
+- contains Was requested [align & static - core]
+
+completed assertions

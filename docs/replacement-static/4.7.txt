@@ -1,0 +1,26 @@
+
+> Task :dependencyInsightEnhanced
+com.google.guava:guava:18.0 (replacement com.google.guava:guava-jdk5 -> com.google.guava:guava, replacement com.google.collections:google-collections -> com.google.guava:guava)
+
+com.google.collections:google-collections:1.0 -> com.google.guava:guava:18.0
+\--- compileClasspath
+
+com.google.guava:guava:18.0
+\--- compileClasspath
+
+nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsight/replacement-static-4-7/dependency-recommendations.properties
+nebula.dependency-lock locked with: dependencies.lock
+nebula.resolution-rules uses: local-rules.json
+nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
+
+> Task :dependencyInsight SKIPPED
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains com.google.collections:google-collections:1.0 -> com.google.guava:guava:18.0 [replaced from]
+- contains Task.*
+.*com.google.guava:guava:18.0 [static version end result]
+
+completed assertions

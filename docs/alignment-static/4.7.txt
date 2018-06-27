@@ -1,0 +1,26 @@
+
+> Task :dependencyInsightEnhanced
+org.slf4j:slf4j-api:1.7.20 ()
+\--- org.slf4j:slf4j-simple:1.7.20
+     \--- compileClasspath
+
+org.slf4j:slf4j-api:1.6.0 -> 1.7.20
+\--- compileClasspath
+
+org.slf4j:slf4j-simple:1.7.20
+\--- compileClasspath
+
+nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsightAlignment/alignment-static-4-7/dependency-recommendations.properties
+nebula.dependency-lock locked with: dependencies.lock
+nebula.resolution-rules uses: local-rules.json
+nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
+
+> Task :dependencyInsight SKIPPED
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains org.slf4j:slf4j-api:1.6.0 -> 1.7.20 [align & static]
+- contains org.slf4j:slf4j-simple:1.7.20 [align & static]
+- contains 'aligned to' or 'By conflict resolution'

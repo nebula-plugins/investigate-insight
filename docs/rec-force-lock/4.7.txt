@@ -1,0 +1,26 @@
+
+> Task :dependencyInsightEnhanced
+com.google.guava:guava:13.0 (locked to 13.0 by dependencies.lock, forced, replacement com.google.guava:guava-jdk5 -> com.google.guava:guava, replacement com.google.collections:google-collections -> com.google.guava:guava)
+
+com.google.guava:guava -> 13.0
+\--- compileClasspath
+
+nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsight/rec-force-lock-4-7/dependency-recommendations.properties
+nebula.dependency-lock locked with: dependencies.lock
+nebula.resolution-rules uses: local-rules.json
+nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
+
+> Task :dependencyInsight SKIPPED
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains 'locked'
+- contains guava -> 13.0 [locked]
+- contains 'forced/Forced'
+- contains guava -> 13.0 [recommended]
+- contains Task.*
+.*guava:13.0 [recommended end result]
+
+completed assertions

@@ -1,0 +1,19 @@
+allprojects {
+    apply plugin: 'groovy'
+
+    group = 'sample.insight'
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        testCompile gradleTestKit()
+        testCompile 'com.netflix.nebula:nebula-test:latest.release'
+        testCompile('org.spockframework:spock-core:1.1-groovy-2.4') { // via nebula-test
+            exclude module: 'groovy-all'
+        }
+        testCompile 'junit:junit' // via nebula-test
+        testCompile 'org.assertj:assertj-core:3.9.0'
+    }
+}

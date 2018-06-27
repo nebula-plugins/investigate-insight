@@ -1,0 +1,25 @@
+
+> Task :dependencyInsightEnhanced
+org.mockito:mockito-core:1.10.19 (substitution because mockito-all contains unrelocated shaded dependencies (hamcrest/objenesis))
+
+org.mockito:mockito-all:1.8.+ -> org.mockito:mockito-core:1.10.19
+\--- compileClasspath
+
+nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsight/substitute-dynamic-force-lock-4-7/dependency-recommendations.properties
+nebula.dependency-lock locked with: dependencies.lock
+nebula.resolution-rules uses: local-rules.json
+nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
+
+> Task :dependencyInsight SKIPPED
+
+BUILD SUCCESSFUL in 0s
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains org.mockito:mockito-all:1.8.+ -> org.mockito:mockito-core:1.10.19 [substitute & dynamic]
+- contains 'nebula-dependency-lock tag line if "locked" is in output' [substitute]
+- does not contain 'forced/Forced' [substitute]
+- contains Task.*
+.*org.mockito:mockito-core:1.10.19 [substitute end result]
+
+completed assertions
