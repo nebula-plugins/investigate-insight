@@ -8,7 +8,8 @@ com.google.guava:guava:19.0
    ]
    Selection reasons:
       - Was requested
-      - Selected by rule : Recommending version 19.0 for dependency com.google.guava:guava with strategy conflict resolution recommendation
+      - Selected by rule : Recommending version 19.0 for dependency com.google.guava:guava via conflict resolution recommendation
+        	with reasons: nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsight/rec-4-9-rc-1/dependency-recommendations.properties
 
 com.google.guava:guava -> 19.0
 \--- compileClasspath
@@ -19,7 +20,7 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 0s
+BUILD SUCCESSFUL
 1 actionable task: 1 executed
 
 === Asserting on... ===

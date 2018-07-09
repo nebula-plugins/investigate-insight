@@ -8,7 +8,8 @@ org.mockito:mockito-core:1.10.19
    ]
    Selection reasons:
       - Was requested
-      - Selected by rule : substitution because mockito-all contains unrelocated shaded dependencies (hamcrest/objenesis)
+      - Selected by rule : substitution because mockito-all contains unrelocated shaded dependencies (hamcrest/objenesis) 
+        	with reasons: nebula.resolution-rules uses: local-rules.json, nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
 
 org.mockito:mockito-all:1.8.+ -> org.mockito:mockito-core:1.10.19
 \--- compileClasspath
@@ -19,7 +20,7 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 0s
+BUILD SUCCESSFUL
 1 actionable task: 1 executed
 
 === Asserting on... ===

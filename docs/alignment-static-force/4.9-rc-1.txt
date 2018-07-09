@@ -23,6 +23,7 @@ org.slf4j:slf4j-simple:1.5.0
    Selection reasons:
       - Was requested : didn't match versions 1.8.0-beta2, 1.8.0-beta1, 1.8.0-beta0, 1.8.0-alpha2, 1.8.0-alpha1, 1.8.0-alpha0, 1.7.25, 1.7.24, 1.7.23, 1.7.22, 1.7.21, 1.7.20, 1.7.19, 1.7.18, 1.7.16, 1.7.15, 1.7.14, 1.7.13, 1.7.12, 1.7.11, 1.7.10, 1.7.9, 1.7.8, 1.7.7, 1.7.6, 1.7.5, 1.7.4, 1.7.3, 1.7.2, 1.7.1, 1.7.0, 1.6.6, 1.6.5, 1.6.4, 1.6.3, 1.6.2, 1.6.1, 1.6.0, 1.6.0-RC0, 1.6.0-alpha2, 1.5.11, 1.5.10, 1.5.9.RC1, 1.5.9-RC0, 1.5.8, 1.5.7, 1.5.6, 1.5.5, 1.5.4, 1.5.3, 1.5.2
       - Selected by rule : aligned to 1.5.0 by align-slf4j
+        	with reasons: nebula.resolution-rules uses: local-rules.json, nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
 
 org.slf4j:slf4j-simple:1.7.20 -> 1.5.0
 \--- compileClasspath
@@ -33,7 +34,7 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 0s
+BUILD SUCCESSFUL
 1 actionable task: 1 executed
 
 === Asserting on... ===

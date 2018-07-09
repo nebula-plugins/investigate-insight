@@ -9,6 +9,7 @@ com.google.guava:guava:18.0
    Selection reasons:
       - Was requested : didn't match versions 25.1-jre, 25.1-android, 25.0-jre, 25.0-android, 24.1.1-jre, 24.1.1-android, 24.1-jre, 24.1-android, 24.0-jre, 24.0-android, 23.6.1-jre, 23.6.1-android, 23.6-jre, 23.6-android, 23.5-jre, 23.5-android, 23.4-jre, 23.4-android, 23.3-jre, 23.3-android, 23.2-jre, 23.2-android, 23.1-jre, 23.1-android, 23.0, 23.0-rc1, 23.0-rc1-android, 23.0-android, 22.0, 22.0-rc1, 22.0-rc1-android, 22.0-android, 21.0, 21.0-rc2, 21.0-rc1, 20.0, 20.0-rc1, 19.0, 19.0-rc3, 19.0-rc2, 19.0-rc1
       - Selected by rule : replacement com.google.collections:google-collections -> com.google.guava:guava
+        	with reasons: nebula.resolution-rules uses: local-rules.json, nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
 
 com.google.collections:google-collections:1.0 -> com.google.guava:guava:18.0
 \--- compileClasspath
@@ -22,7 +23,7 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 0s
+BUILD SUCCESSFUL
 1 actionable task: 1 executed
 
 === Asserting on... ===

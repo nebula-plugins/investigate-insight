@@ -10,6 +10,7 @@ com.google.guava:guava:14.0.1
       - Was requested
       - Forced
       - Selected by rule : replacement com.google.collections:google-collections -> com.google.guava:guava
+        	with reasons: nebula.resolution-rules uses: local-rules.json, nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
 
 com.google.collections:google-collections:1.0 -> com.google.guava:guava:14.0.1
 \--- compileClasspath
@@ -23,7 +24,7 @@ Deprecated Gradle features were used in this build, making it incompatible with 
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 0s
+BUILD SUCCESSFUL
 1 actionable task: 1 executed
 
 === Asserting on... ===

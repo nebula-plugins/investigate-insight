@@ -67,7 +67,7 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
 
         then:
         DocWriter w = new DocWriter(title, insightSource, projectDir)
-        w.writeBuildOutput(result.output)
+        w.writeCleanedUpBuildOutput(result.output)
 
         // assert on final version
         // FIXME: note: aligns use force > locks, but no other rules do this
@@ -136,14 +136,14 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
         if (firstRecVersion != null) {
             // FIXME: this should happen. It does not for nebula plugins or core gradle.
             def orKeywords = ["Recommending version ${firstRecVersion} for dependency", 'recommend']
-//            w.addAssertionToDoc("contains '${orKeywords[0]}' or '${orKeywords[1]}' before footer [align & rec]")
-            
+            w.addAssertionToDoc("contains '${orKeywords[0]}' or '${orKeywords[1]}' before footer [align & rec]")
+
             def split = result.output.split('nebula.dependency-recommender')
-//            assert split[0].contains(orKeywords[0]) || split[0].contains(orKeywords[1])
+            assert split[0].contains(orKeywords[0]) || split[0].contains(orKeywords[1])
         }
 
 
-        w.addFooter('completed assertions')
+        w.writeFooter('completed assertions')
 
         where:
         insightSource | first    | second      | firstStaticVersion | secondStaticVersion | firstRecVersion | firstForceVersion | secondForceVersion | firstLockVersion | secondLockVersion | title

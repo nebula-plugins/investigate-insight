@@ -8,14 +8,17 @@ Gradle has changed their core `dependencyInsight` task, and this is some investi
 
 We are testing the insight for dependencies with versions from... 
 
-- Static configuration
-- Dynamic configuration
-- A lockfile
-- A forced override
-- A BOM recommendation
-- A replacement rule
-- A substitution rule
-- An alignment rule
+- Basic version selection reasons
+    - Static configuration
+    - Dynamic configuration
+    - A recommendation (BOM or properties file)
+- Enforcement selection reasons
+    - A lockfile
+    - A forced override
+- Selection rules
+    - A replacement rule
+    - A substitution rule
+    - An alignment rule
 
 #### Under test
 See the following configurations:

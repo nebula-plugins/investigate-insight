@@ -17,7 +17,7 @@ nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
 
 > Task :dependencyInsight SKIPPED
 
-BUILD SUCCESSFUL in 0s
+BUILD SUCCESSFUL
 1 actionable task: 1 executed
 
 === Asserting on... ===

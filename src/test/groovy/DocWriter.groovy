@@ -34,7 +34,7 @@ class DocWriter {
         docs.mkdirs()
     }
 
-    def writeBuildOutput(String output) {
+    def writeCleanedUpBuildOutput(String output) {
         def depFolder = new File(docs, title)
         depFolder.mkdirs()
 
@@ -42,7 +42,9 @@ class DocWriter {
         file.delete()
         file.createNewFile()
 
-        file << output
+        file << output.replaceAll("nebula.dependency-recommender uses a properties file: .*/investigate-insight",
+                "nebula.dependency-recommender uses a properties file: ./investigate-insight")
+                .replaceAll('BUILD SUCCESSFUL in .*s', 'BUILD SUCCESSFUL')
 
         file << """
 === Asserting on... ===
@@ -56,7 +58,7 @@ class DocWriter {
         file << "- $message\n"
     }
 
-    def addFooter(String first) {
+    def writeFooter(String first) {
         def depFolder = new File(docs, title)
         def file = new File(depFolder, "${insightSource}.txt")
 

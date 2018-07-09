@@ -19,12 +19,11 @@ nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
 
 > Task :dependencyInsight SKIPPED
 
-BUILD SUCCESSFUL in 0s
+BUILD SUCCESSFUL
 1 actionable task: 1 executed
 
 === Asserting on... ===
 - contains org.slf4j:slf4j-api.*-> 1.5.0 [align & force]
 - contains org.slf4j:slf4j-simple.*-> 1.5.0 [align & force]
 - contains 'forced' or 'Forced'
-
-completed assertions
+- contains 'Recommending version 1.7.25 for dependency' or 'recommend' before footer [align & rec]

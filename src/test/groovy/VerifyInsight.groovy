@@ -83,9 +83,9 @@ class VerifyInsight extends AbstractVerifyInsight {
 
         then:
         DocWriter w = new DocWriter(title, insightSource, projectDir)
-        w.writeBuildOutput(result.output)
+        w.writeCleanedUpBuildOutput(result.output)
         verifyOutput(result.output, dependencyHelper, dep, w)
-        w.addFooter('completed assertions')
+        w.writeFooter('completed assertions')
 
         where:
         insightSource | dep     | staticVersion | dynamicVersion | recVersion | forceVersion | lockVersion | replaceFrom    | substitute     | title
