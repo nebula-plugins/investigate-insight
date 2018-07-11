@@ -20,17 +20,13 @@
 class DocWriter {
     String title
     String insightSource
-    File projectDir
     File docs
 
-    DocWriter(String title, String insightSource, File projectDir) {
+    DocWriter(String title, String insightSource) {
         this.title = title
         this.insightSource = insightSource
-        this.projectDir = projectDir
 
-        def up = File.separator + '..'
-        def topLevel = new File(projectDir.getPath() + up + up + up + up)
-        docs = new File(topLevel, "docs")
+        docs = new File("docs")
         docs.mkdirs()
     }
 

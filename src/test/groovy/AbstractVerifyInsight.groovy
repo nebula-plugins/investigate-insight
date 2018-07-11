@@ -20,6 +20,7 @@
 import com.google.common.io.Resources
 
 import java.nio.charset.StandardCharsets
+import java.time.LocalDateTime
 
 abstract class AbstractVerifyInsight extends TestKitSpecification {
     static def plugins = '4.7' // gradle v
@@ -33,7 +34,11 @@ abstract class AbstractVerifyInsight extends TestKitSpecification {
         dependencyRecommendations << readFileFromClasspath('dependency-recommendations.properties')
     }
 
-    def cleanup() {
+    def cleanupSpec() {
+        def file = new File("docs", "lastUpdated.txt")
+        file.delete()
+        file.createNewFile()
+        file << "Last updated at: ${LocalDateTime.now()}"
     }
 
     def tasks(String dependencyName) {
@@ -51,16 +56,16 @@ abstract class AbstractVerifyInsight extends TestKitSpecification {
                 """.stripIndent()
         } else {
             pluginClasspaths = """
-            classpath ('com.netflix.nebula:nebula-dependency-base-plugin:1.0.0-rc.1.dev.0.uncommitted+2998f3d') {
+            classpath ('com.netflix.nebula:nebula-dependency-base-plugin:1.0.0-rc.1') {
                 force = true
             }
-            classpath ('com.netflix.nebula:gradle-resolution-rules-plugin:5.3.0-dev.0.uncommitted+5ee5f2c') { // FIXME: update with RC-version
+            classpath ('com.netflix.nebula:gradle-resolution-rules-plugin:5.3.0-dev.11+core.gradle.insight.8393b32') { // FIXME: update with RC-version
                 force = true
             }
-            classpath ('com.netflix.nebula:nebula-dependency-recommender:5.2.0-dev.1.uncommitted+74e1bfa') {
+            classpath ('com.netflix.nebula:nebula-dependency-recommender:5.2.0-dev.2+core.gradle.insight.6265c17') {
                 force = true
             }
-            classpath ('com.netflix.nebula:gradle-dependency-lock-plugin:5.1.0-dev.7.uncommitted+cf08279') {
+            classpath ('com.netflix.nebula:gradle-dependency-lock-plugin:5.1.0-dev.12+d38dcad') {
                 force = true
             }
             """.stripIndent()

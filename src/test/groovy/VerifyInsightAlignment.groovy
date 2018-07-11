@@ -66,7 +66,7 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
         def result = runTasks(*tasks('slf4j'))
 
         then:
-        DocWriter w = new DocWriter(title, insightSource, projectDir)
+        DocWriter w = new DocWriter(title, insightSource)
         w.writeCleanedUpBuildOutput(result.output)
 
         // assert on final version
