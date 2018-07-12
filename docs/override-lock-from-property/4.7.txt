@@ -1,5 +1,5 @@
 === For the overridden dependency ===
-Tasks: dependencyInsight --dependency guava -PdependencyLock.override=com.google.guava:guava:11.0
+Tasks: dependencyInsight --dependency guava --warning-mode all -PdependencyLock.override=com.google.guava:guava:11.0
 
 
 > Task :dependencyInsightEnhanced
@@ -21,7 +21,7 @@ BUILD SUCCESSFUL
 
 
 === For the control dependency ===
-Tasks: dependencyInsight --dependency commons-io -PdependencyLock.override=com.google.guava:guava:11.0
+Tasks: dependencyInsight --dependency commons-io --warning-mode all -PdependencyLock.override=com.google.guava:guava:11.0
 
 
 > Task :dependencyInsightEnhanced

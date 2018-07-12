@@ -42,7 +42,7 @@ abstract class AbstractVerifyInsight extends TestKitSpecification {
     }
 
     def tasksFor(String dependencyName) {
-        ['dependencyInsight', '--dependency', "${dependencyName}"]
+        ['dependencyInsight', '--dependency', "${dependencyName}", '--warning-mode', 'all']
     }
 
     File createSimpleBuildFile(String insightSource) {
@@ -59,13 +59,13 @@ abstract class AbstractVerifyInsight extends TestKitSpecification {
             classpath ('com.netflix.nebula:nebula-dependency-base-plugin:1.0.0-rc.1') {
                 force = true
             }
-            classpath ('com.netflix.nebula:gradle-resolution-rules-plugin:5.3.0-dev.11+core.gradle.insight.8393b32') { // FIXME: update with RC-version
+            classpath ('com.netflix.nebula:gradle-resolution-rules-plugin:5.3.0-dev.14+core.gradle.insight.ed2d8cf') { 
                 force = true
             }
-            classpath ('com.netflix.nebula:nebula-dependency-recommender:5.2.0-dev.2+core.gradle.insight.6265c17') {
+            classpath ('com.netflix.nebula:nebula-dependency-recommender:5.2.0-dev.5+core.gradle.insight.3b122a6') {
                 force = true
             }
-            classpath ('com.netflix.nebula:gradle-dependency-lock-plugin:5.1.0-dev.13+da853fa') {
+            classpath ('com.netflix.nebula:gradle-dependency-lock-plugin:6.0.0-rc.1') {
                 force = true
             }
             """.stripIndent()

@@ -1,5 +1,5 @@
 === For the dependency under test ===
-Tasks: dependencyInsight --dependency mockito
+Tasks: dependencyInsight --dependency mockito --warning-mode all
 
 
 > Task :dependencyInsight
@@ -18,10 +18,6 @@ org.mockito:mockito-all -> org.mockito:mockito-core:1.10.19
 \--- compileClasspath
 
 A web-based, searchable dependency report is available by adding the --scan option.
-
-Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0.
-Use '--warning-mode all' to show the individual deprecation warnings.
-See https://docs.gradle.org/4.9-rc-1/userguide/command_line_interface.html#sec:command_line_warnings
 
 BUILD SUCCESSFUL
 1 actionable task: 1 executed

@@ -1,5 +1,5 @@
 === For the dependency under test ===
-Tasks: dependencyInsight --dependency guava
+Tasks: dependencyInsight --dependency guava --warning-mode all
 
 
 > Task :dependencyInsightEnhanced
