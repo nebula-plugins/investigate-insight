@@ -68,7 +68,7 @@ class VerifyInsightOverrideLock extends AbstractVerifyInsight {
         createJavaSourceFile(projectDir, createMainFile())
 
         when:
-        def tasksForOverrides = tasks(dep)
+        def tasksForOverrides = tasksFor(dep)
         if (overrideLockFileVersion != null) {
             tasksForOverrides.add('-PdependencyLock.overrideFile=override.lock')
         }
@@ -79,7 +79,7 @@ class VerifyInsightOverrideLock extends AbstractVerifyInsight {
         def resultForOverrides = runTasks(*tasksForOverrides)
 
 
-        def tasksForControl = tasks(control)
+        def tasksForControl = tasksFor(control)
         if (overrideLockFileVersion != null) {
             tasksForControl.add('-PdependencyLock.overrideFile=override.lock')
         }
@@ -91,10 +91,17 @@ class VerifyInsightOverrideLock extends AbstractVerifyInsight {
 
 
         then:
+        DocWriter w = new DocWriter(title, insightSource)
+        w.writeCleanedUpBuildOutput(
+                '=== For the overridden dependency ===\n' +
+                        "Tasks: ${tasksForOverrides.join(' ')}\n\n" +
+                        resultForOverrides.output +
+                        '\n\n=== For the control dependency ===\n' +
+                        "Tasks: ${tasksForControl.join(' ')}\n\n" +
+                        resultForControl.output)
+
         verifyOutputForControl(resultForControl.output)
 
-        DocWriter w = new DocWriter(title, insightSource)
-        w.writeCleanedUpBuildOutput(resultForOverrides.output)
         verifyOutput(resultForOverrides.output, dependencyHelper, dep, w)
         w.writeFooter('completed assertions')
 
@@ -115,8 +122,11 @@ class VerifyInsightOverrideLock extends AbstractVerifyInsight {
     private static void verifyOutputForControl(String output) {
         def split = output.split('nebula.dependency-recommender')
 
-        assert !split[0].contains('locked')
-        assert !split[0].contains('nebula.dependency-lock')
+        def firstSection = split[0]
+
+        assert !firstSection.contains('locked')
+        assert !firstSection.contains('nebula.dependency-lock')
+        assert !firstSection.contains('override')
     }
 
     private static void verifyOutput(String output, DependencyHelper dh, String dep, DocWriter w) {

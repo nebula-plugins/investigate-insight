@@ -1,3 +1,6 @@
+=== For the dependency under test ===
+Tasks: dependencyInsight --dependency slf4j
+
 
 > Task :dependencyInsightEnhanced
 org.slf4j:slf4j-api:1.7.25 (aligned to 1.7.25 by align-slf4j, recommend 1.7.25 via conflict resolution recommendation)

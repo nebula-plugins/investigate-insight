@@ -1,8 +1,31 @@
+=== For the overridden dependency ===
+Tasks: dependencyInsight --dependency guava -PdependencyLock.override=com.google.guava:guava:11.0
+
 
 > Task :dependencyInsightEnhanced
 com.google.guava:guava:11.0 (locked to 11.0 by dependencies.lock, locked to 13.0 by dependencies.lock, replacement com.google.guava:guava-jdk5 -> com.google.guava:guava, replacement com.google.collections:google-collections -> com.google.guava:guava)
 
 com.google.guava:guava:18.0 -> 11.0
+\--- compileClasspath
+
+nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsightOverrideLock/override-lock-from-property-4-7/dependency-recommendations.properties
+nebula.dependency-lock locked with: dependencies.lock
+nebula.dependency-lock using override: com.google.guava:guava:11.0
+nebula.resolution-rules uses: local-rules.json
+nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
+
+> Task :dependencyInsight SKIPPED
+
+BUILD SUCCESSFUL
+1 actionable task: 1 executed
+
+
+=== For the control dependency ===
+Tasks: dependencyInsight --dependency commons-io -PdependencyLock.override=com.google.guava:guava:11.0
+
+
+> Task :dependencyInsightEnhanced
+commons-io:commons-io:2.6
 \--- compileClasspath
 
 nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsightOverrideLock/override-lock-from-property-4-7/dependency-recommendations.properties

@@ -41,7 +41,7 @@ abstract class AbstractVerifyInsight extends TestKitSpecification {
         file << "Last updated at: ${LocalDateTime.now()}"
     }
 
-    def tasks(String dependencyName) {
+    def tasksFor(String dependencyName) {
         ['dependencyInsight', '--dependency', "${dependencyName}"]
     }
 

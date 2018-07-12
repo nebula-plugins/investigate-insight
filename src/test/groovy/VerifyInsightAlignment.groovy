@@ -61,13 +61,16 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
             """.stripIndent()
 
         createJavaSourceFile(projectDir, createMainFile())
+        def tasks = tasksFor('slf4j')
 
         when:
-        def result = runTasks(*tasks('slf4j'))
+        def result = runTasks(*tasks)
 
         then:
         DocWriter w = new DocWriter(title, insightSource)
-        w.writeCleanedUpBuildOutput(result.output)
+        w.writeCleanedUpBuildOutput('=== For the dependency under test ===\n' +
+                "Tasks: ${tasks.join(' ')}\n\n" +
+                result.output)
 
         // assert on final version
         // FIXME: note: aligns use force > locks, but no other rules do this

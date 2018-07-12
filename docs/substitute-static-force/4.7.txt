@@ -1,3 +1,6 @@
+=== For the dependency under test ===
+Tasks: dependencyInsight --dependency mockito
+
 
 > Task :dependencyInsightEnhanced
 org.mockito:mockito-core:1.10.19 (substitution because mockito-all contains unrelocated shaded dependencies (hamcrest/objenesis))

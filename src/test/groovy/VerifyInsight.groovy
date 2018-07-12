@@ -77,13 +77,16 @@ class VerifyInsight extends AbstractVerifyInsight {
             """.stripIndent()
 
         createJavaSourceFile(projectDir, createMainFile())
+        def tasks = tasksFor(dep)
 
         when:
-        def result = runTasks(*tasks(dep))
+        def result = runTasks(*tasks)
 
         then:
         DocWriter w = new DocWriter(title, insightSource)
-        w.writeCleanedUpBuildOutput(result.output)
+        w.writeCleanedUpBuildOutput('=== For the dependency under test ===\n' +
+                "Tasks: ${tasks.join(' ')}\n\n" +
+                result.output)
         verifyOutput(result.output, dependencyHelper, dep, w)
         w.writeFooter('completed assertions')
 

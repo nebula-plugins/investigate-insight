@@ -27,6 +27,7 @@ class DocWriter {
         this.insightSource = insightSource
 
         docs = new File("docs")
+        docs.delete()
         docs.mkdirs()
     }
 

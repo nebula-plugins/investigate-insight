@@ -1,3 +1,6 @@
+=== For the dependency under test ===
+Tasks: dependencyInsight --dependency guava
+
 
 > Task :dependencyInsightEnhanced
 com.google.guava:guava:13.0 (locked to 13.0 by dependencies.lock, replacement com.google.guava:guava-jdk5 -> com.google.guava:guava, replacement com.google.collections:google-collections -> com.google.guava:guava)
