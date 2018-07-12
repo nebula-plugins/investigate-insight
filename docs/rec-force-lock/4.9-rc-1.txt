@@ -8,7 +8,8 @@ com.google.guava:guava:13.0
    ]
    Selection reasons:
       - Was requested
-      - Selected by rule : com.google.guava:guava locked to 13.0 by nebula.dependency-lock with dependencies.lock
+      - Selected by rule : com.google.guava:guava locked to 13.0
+        	with reasons: nebula.dependency-lock locked with: dependencies.lock
 
 com.google.guava:guava -> 13.0
 \--- compileClasspath

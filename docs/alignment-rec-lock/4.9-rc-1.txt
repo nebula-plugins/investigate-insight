@@ -26,7 +26,8 @@ org.slf4j:slf4j-simple:1.7.2
    ]
    Selection reasons:
       - Was requested
-      - Selected by rule : org.slf4j:slf4j-simple locked to 1.7.2 by nebula.dependency-lock with dependencies.lock
+      - Selected by rule : org.slf4j:slf4j-simple locked to 1.7.2
+        	with reasons: nebula.dependency-lock locked with: dependencies.lock
 
 org.slf4j:slf4j-simple:1.7.20 -> 1.7.2
 \--- compileClasspath

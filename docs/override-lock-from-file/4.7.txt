@@ -1,0 +1,27 @@
+
+> Task :dependencyInsightEnhanced
+com.google.guava:guava:10.0 (locked to 10.0 by dependencies.lock, locked to 13.0 by dependencies.lock, replacement com.google.guava:guava-jdk5 -> com.google.guava:guava, replacement com.google.collections:google-collections -> com.google.guava:guava)
+
+com.google.guava:guava:18.0 -> 10.0
+\--- compileClasspath
+
+nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsightOverrideLock/override-lock-from-file-4-7/dependency-recommendations.properties
+nebula.dependency-lock locked with: dependencies.lock
+nebula.dependency-lock using override file: override.lock
+nebula.resolution-rules uses: local-rules.json
+nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
+
+> Task :dependencyInsight SKIPPED
+
+BUILD SUCCESSFUL
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- contains 'locked'
+- contains 'nebula.dependency-lock locked with: dependencies.lock'
+- contains guava:18.0 -> 10.0 [locked]
+- contains 'nebula.dependency-lock using override file: override.lock'
+- contains Task.*
+.*guava:10.0 [static version end result]
+
+completed assertions

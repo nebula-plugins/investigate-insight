@@ -1,6 +1,6 @@
 
 > Task :dependencyInsight
-com.google.guava:guava:13.0
+com.google.guava:guava:10.0
    variant "default" [
       org.gradle.status = release (not requested)
       Requested attributes not found in the selected variant:
@@ -8,10 +8,10 @@ com.google.guava:guava:13.0
    ]
    Selection reasons:
       - Was requested
-      - Selected by rule : com.google.guava:guava locked to 13.0
-        	with reasons: nebula.dependency-lock locked with: dependencies.lock
+      - Selected by rule : com.google.guava:guava locked to 10.0
+        	with reasons: nebula.dependency-lock locked with: dependencies.lock, nebula.dependency-lock using override file: override.lock
 
-com.google.guava:guava -> 13.0
+com.google.guava:guava:18.0 -> 10.0
 \--- compileClasspath
 
 A web-based, searchable dependency report is available by adding the --scan option.
@@ -25,9 +25,10 @@ BUILD SUCCESSFUL
 
 === Asserting on... ===
 - contains 'locked'
-- contains guava -> 13.0 [locked]
-- contains guava -> 13.0 [recommended]
+- contains 'nebula.dependency-lock locked with: dependencies.lock'
+- contains guava:18.0 -> 10.0 [locked]
+- contains 'nebula.dependency-lock using override file: override.lock'
 - contains Task.*
-.*guava:13.0 [recommended end result]
+.*guava:10.0 [static version end result]
 
 completed assertions

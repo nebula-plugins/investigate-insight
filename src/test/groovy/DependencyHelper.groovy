@@ -25,6 +25,8 @@ class DependencyHelper {
     String recommendedVersion
     String forceVersion
     String lockVersion
+    String overrideLockFileVersion
+    String overrideLockPropertyVersion
     String versionForDynamicToResolveTo
 
     String replaceFrom
@@ -45,6 +47,12 @@ class DependencyHelper {
             resolvedModuleIdentifier = requestedModuleIdentifier
         }
         if (lockVersion != null) {
+            if (overrideLockFileVersion != null) {
+                return new Coordinate(resolvedModuleIdentifier, overrideLockFileVersion)
+            }
+            if (overrideLockPropertyVersion != null) {
+                return new Coordinate(resolvedModuleIdentifier, overrideLockPropertyVersion)
+            } // this logic will have a problem if we test using both an override property & file
             return new Coordinate(resolvedModuleIdentifier, lockVersion)
         }
         if (forceVersion != null) {

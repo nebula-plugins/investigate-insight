@@ -65,7 +65,7 @@ abstract class AbstractVerifyInsight extends TestKitSpecification {
             classpath ('com.netflix.nebula:nebula-dependency-recommender:5.2.0-dev.2+core.gradle.insight.6265c17') {
                 force = true
             }
-            classpath ('com.netflix.nebula:gradle-dependency-lock-plugin:5.1.0-dev.12+d38dcad') {
+            classpath ('com.netflix.nebula:gradle-dependency-lock-plugin:5.1.0-dev.13+da853fa') {
                 force = true
             }
             """.stripIndent()
@@ -141,11 +141,22 @@ class MainDynamic {
     }
 
     def createLockfile(String dependencyName) {
-        def lockFile = new File(projectDir, "dependencies.lock")
+        def lockFile = new File(projectDir, 'dependencies.lock')
         lockFile << readFileFromClasspath("${dependencyName}-dependencies.lock")
     }
 
     private static String readFileFromClasspath(String filename) {
         Resources.toString(Resources.getResource(filename), StandardCharsets.UTF_8)
+    }
+
+    def createOverrideLockfileIfNeeded(String dep, String overrideLockVersion) {
+        if (overrideLockVersion != null) {
+            def overrideLockFile = new File(projectDir, 'override.lock')
+            overrideLockFile << """
+                {
+                  "$dep": "$overrideLockVersion"
+                }
+                """.stripIndent()
+        }
     }
 }
