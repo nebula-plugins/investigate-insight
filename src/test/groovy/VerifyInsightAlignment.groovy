@@ -65,66 +65,68 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
 
         when:
         def result = runTasks(*tasks)
+        def output = result.output
 
         then:
         DocWriter w = new DocWriter(title, insightSource)
+
         w.writeCleanedUpBuildOutput('=== For the dependency under test ===\n' +
                 "Tasks: ${tasks.join(' ')}\n\n" +
-                result.output)
+                output)
 
         // assert on final version
         // FIXME: note: aligns use force > locks, but no other rules do this
         if (firstForceVersion != null) {
             def firstRegex = "${lookup[first]}.*-> ${firstForceVersion}"
             w.addAssertionToDoc("contains $firstRegex [align & force]")
-            assert result.output.findAll(firstRegex).size() > 0
+            assert output.findAll(firstRegex).size() > 0
 
             def secondRegex = "${lookup[second]}.*-> ${firstForceVersion}"
             w.addAssertionToDoc("contains $secondRegex [align & force]")
-            assert result.output.findAll(secondRegex).size() > 0 // aligned to first force
+            assert output.findAll(secondRegex).size() > 0 // aligned to first force
         } else if (firstLockVersion != null) {
             def firstRegex = "${lookup[first]}.*-> ${secondLockVersion}"
             w.addAssertionToDoc("contains $firstRegex [align & lock]")
-            assert result.output.findAll(firstRegex).size() > 0 // aligned to higher lock version
+            assert output.findAll(firstRegex).size() > 0 // aligned to higher lock version
 
             def secondRegex = "${lookup[second]}.*-> ${secondLockVersion}"
             w.addAssertionToDoc("contains $secondRegex [align & lock]")
-            assert result.output.findAll(secondRegex).size() > 0
+            assert output.findAll(secondRegex).size() > 0
         } else if (firstStaticVersion != null) {
             def firstRegex = "${lookup[first]}:$firstStaticVersion -> $secondStaticVersion"
             w.addAssertionToDoc("contains $firstRegex [align & static]")
-            assert result.output.findAll(firstRegex).size() > 0 // aligned to higher static
+            assert output.findAll(firstRegex).size() > 0 // aligned to higher static
 
             def secondRegex = "${lookup[second]}:$secondStaticVersion"
             w.addAssertionToDoc("contains $secondRegex [align & static]")
-            assert result.output.findAll(secondRegex).size() > 0
+            assert output.findAll(secondRegex).size() > 0
         } else {
             def firstExpected = "${lookup[first]} -> ${firstRecVersion}"
             w.addAssertionToDoc("contains $firstExpected [align & rec]")
-            assert result.output.contains(firstExpected)
+            assert output.contains(firstExpected)
 
             def secondExpected = "${lookup[second]}:$secondStaticVersion -> ${firstRecVersion}"
             w.addAssertionToDoc("contains $secondExpected [align & rec]")
-            assert result.output.contains(secondExpected) // aligned to recommended
+            assert output.contains(secondExpected) // aligned to recommended
         }
 
         // assert on supporting causes
         if (firstForceVersion == null) { // FIXME: should happen for all cases
             def orKeywords = ['aligned to', 'By conflict resolution']
             w.addAssertionToDoc("contains '${orKeywords[0]}' or '${orKeywords[1]}'")
-            assert result.output.contains(orKeywords[0]) || result.output.contains(orKeywords[1])
+            assert output.contains(orKeywords[0]) || output.contains(orKeywords[1])
         }
 
         if (firstLockVersion != null) {
             def expectedOutput = 'locked'
             w.addAssertionToDoc("contains $expectedOutput [align & lock]")
-            assert result.output.contains(expectedOutput)
+            assert output.contains(expectedOutput)
         }
 
         if (firstForceVersion != null) {
             def orKeywords = ['forced', 'Forced']
             w.addAssertionToDoc("contains '${orKeywords[0]}' or '${orKeywords[1]}'")
-            assert result.output.contains(orKeywords[0]) || result.output.contains(orKeywords[1])
+            assert output.contains(orKeywords[0]) || output.contains(orKeywords[1])
             // FIXME: this should happen
         }
 
@@ -132,7 +134,7 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
             if (insightSource == core) {
                 def expectedOutput = 'Was requested'
                 w.addAssertionToDoc("contains $expectedOutput [align & static - core]")
-                assert result.output.contains(expectedOutput)
+                assert output.contains(expectedOutput)
             }
         }
 
@@ -141,8 +143,9 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
             def orKeywords = ["Recommending version ${firstRecVersion} for dependency", 'recommend']
             w.addAssertionToDoc("contains '${orKeywords[0]}' or '${orKeywords[1]}' before footer [align & rec]")
 
-            def split = result.output.split('nebula.dependency-recommender')
-            assert split[0].contains(orKeywords[0]) || split[0].contains(orKeywords[1])
+            def split = output.split('nebula.dependency-recommender')
+            def firstSection = split[0]
+            assert firstSection.contains(orKeywords[0]) || firstSection.contains(orKeywords[1])
         }
 
 

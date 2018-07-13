@@ -13,8 +13,9 @@ We are testing the insight for dependencies with versions from...
     - Dynamic configuration
     - A recommendation (BOM or properties file)
 - Enforcement selection reasons
-    - A lockfile
     - A forced override
+    - A lockfile
+    - An lockfile override from a file or property
 - Selection rules
     - A replacement rule
     - A substitution rule

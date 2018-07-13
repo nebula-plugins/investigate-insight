@@ -59,10 +59,10 @@ abstract class AbstractVerifyInsight extends TestKitSpecification {
             classpath ('com.netflix.nebula:nebula-dependency-base-plugin:1.0.0-rc.1') {
                 force = true
             }
-            classpath ('com.netflix.nebula:gradle-resolution-rules-plugin:5.3.0-dev.14+core.gradle.insight.ed2d8cf') { 
+            classpath ('com.netflix.nebula:gradle-resolution-rules-plugin:6.0.0-rc.1') { 
                 force = true
             }
-            classpath ('com.netflix.nebula:nebula-dependency-recommender:5.2.0-dev.5+core.gradle.insight.3b122a6') {
+            classpath ('com.netflix.nebula:nebula-dependency-recommender:6.0.0-rc.1') {
                 force = true
             }
             classpath ('com.netflix.nebula:gradle-dependency-lock-plugin:6.0.0-rc.1') {
