@@ -67,14 +67,14 @@ class VerifyInsight extends AbstractVerifyInsight {
         def version = dependencyHelper.findRequestedVersion() // static, dynamic, or recommended
 
         buildFile << """
-            dependencies {
-                compile 'org.slf4j:slf4j-api:1.7.25'
-                compile 'org.slf4j:slf4j-simple:1.7.25'
-                compile '${lookupRequestedModuleIdentifier[dep]}${version}'
-                ${replaceFrom != null ? "compile '$replaceFrom'" : ''}
-            }
-            ${createForceConfigurationIfNeeded(dep, forceVersion, lookupRequestedModuleIdentifier)}
-            """.stripIndent()
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-simple:1.7.25'
+    compile '${lookupRequestedModuleIdentifier[dep]}${version}'
+    ${replaceFrom != null ? "compile '$replaceFrom'" : ''}
+}
+${createForceConfigurationIfNeeded(dep, forceVersion, lookupRequestedModuleIdentifier)}
+""".stripIndent()
 
         createJavaSourceFile(projectDir, createMainFile())
         def tasks = tasksFor(dep)

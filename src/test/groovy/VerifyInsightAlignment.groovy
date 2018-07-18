@@ -51,14 +51,14 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
         def firstRequestedVersion = dependencyHelper.findRequestedVersion() // static, dynamic, or recommended
 
         buildFile << """
-            dependencies {
-                compile '${lookup[first]}${firstRequestedVersion}'
-                compile '${lookup[second]}:${secondStaticVersion}'
-                compile 'com.google.guava:guava:18.0'
-            }
-            ${createForceConfigurationIfNeeded(first, firstForceVersion, lookup)}
-            ${createForceConfigurationIfNeeded(second, secondForceVersion, lookup)}
-            """.stripIndent()
+dependencies {
+    compile '${lookup[first]}${firstRequestedVersion}'
+    compile '${lookup[second]}:${secondStaticVersion}'
+    compile 'com.google.guava:guava:18.0'
+}
+${createForceConfigurationIfNeeded(first, firstForceVersion, lookup)}
+${createForceConfigurationIfNeeded(second, secondForceVersion, lookup)}
+""".stripIndent()
 
         createJavaSourceFile(projectDir, createMainFile())
         def tasks = tasksFor('slf4j')

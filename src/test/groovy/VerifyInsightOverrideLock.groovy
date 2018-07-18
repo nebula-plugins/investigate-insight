@@ -57,13 +57,13 @@ class VerifyInsightOverrideLock extends AbstractVerifyInsight {
         def version = dependencyHelper.findRequestedVersion() // static, dynamic, or recommended
 
         buildFile << """
-            dependencies {
-                compile 'org.slf4j:slf4j-api:1.7.25'
-                compile 'org.slf4j:slf4j-simple:1.7.25'
-                compile '${lookupRequestedModuleIdentifier[dep]}${version}'
-                compile '${lookupRequestedModuleIdentifier[control]}:2.6' // the control dependency
-            }
-            """.stripIndent()
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-simple:1.7.25'
+    compile '${lookupRequestedModuleIdentifier[dep]}${version}'
+    compile '${lookupRequestedModuleIdentifier[control]}:2.6' // the control dependency
+}
+""".stripIndent()
 
         createJavaSourceFile(projectDir, createMainFile())
 

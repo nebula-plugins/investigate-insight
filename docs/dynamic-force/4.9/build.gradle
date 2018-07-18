@@ -34,17 +34,16 @@ dependencies {
     resolutionRules files('local-rules.json') // mostly from https://github.com/nebula-plugins/gradle-resolution-rules-plugin/wiki/Example-Rules-JSON
 }
         
-            dependencies {
-                compile 'org.slf4j:slf4j-api:1.7.25'
-                compile 'org.slf4j:slf4j-simple:1.7.25'
-                compile 'com.google.guava:guava:18.+'
-                
-            }
-            
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-simple:1.7.25'
+    compile 'com.google.guava:guava:18.+'
+    
+}
+
 configurations.all {
     resolutionStrategy {
         force 'com.google.guava:guava:14.0.1'
     }
 }
 
-            
