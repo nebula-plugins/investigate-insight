@@ -12,7 +12,12 @@ com.google.guava:guava:19.0
    Selection reasons:
       - Was requested
       - Selected by rule : Recommending version 19.0 for dependency com.google.guava:guava via conflict resolution recommendation
-        	with reasons: nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsight/rec-4-9-rc-1/dependency-recommendations.properties
+        	with reasons: nebula.dependency-recommender uses a properties file: ./investigate-insight/build/nebulatest/VerifyInsight/replacement-rec-4-9/dependency-recommendations.properties
+      - Selected by rule : replacement com.google.collections:google-collections -> com.google.guava:guava
+        	with reasons: nebula.resolution-rules uses: local-rules.json, nebula.resolution-rules uses: gradle-resolution-rules-0.53.0.jar
+
+com.google.collections:google-collections:1.0 -> com.google.guava:guava:19.0
+\--- compileClasspath
 
 com.google.guava:guava -> 19.0
 \--- compileClasspath
@@ -23,8 +28,9 @@ BUILD SUCCESSFUL
 1 actionable task: 1 executed
 
 === Asserting on... ===
-- contains guava -> 19.0 [recommended]
+- contains com.google.collections:google-collections:1.0 -> com.google.guava:guava:19.0 [replaced from]
+- contains com.google.guava:guava -> 19.0 [recommended]
 - contains Task.*
-.*guava:19.0 [recommended end result]
+.*com.google.guava:guava:19.0 [recommended end result]
 
 completed assertions

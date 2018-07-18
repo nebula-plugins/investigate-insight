@@ -24,7 +24,7 @@ import java.time.LocalDateTime
 
 abstract class AbstractVerifyInsight extends TestKitSpecification {
     static def plugins = '4.7' // gradle v
-    static def core = '4.9-rc-1' // gradle v
+    static def core = '4.9' // gradle v
 
     def setup() {
         def localRules = new File(projectDir, 'local-rules.json')
