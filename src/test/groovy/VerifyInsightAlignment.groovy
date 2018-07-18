@@ -68,11 +68,12 @@ class VerifyInsightAlignment extends AbstractVerifyInsight {
         def output = result.output
 
         then:
-        DocWriter w = new DocWriter(title, insightSource)
+        DocWriter w = new DocWriter(title, insightSource, projectDir)
 
         w.writeCleanedUpBuildOutput('=== For the dependency under test ===\n' +
                 "Tasks: ${tasks.join(' ')}\n\n" +
                 output)
+        w.writeProjectFiles()
 
         // assert on final version
         // FIXME: note: aligns use force > locks, but no other rules do this

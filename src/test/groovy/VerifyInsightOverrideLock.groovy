@@ -91,7 +91,7 @@ class VerifyInsightOverrideLock extends AbstractVerifyInsight {
 
 
         then:
-        DocWriter w = new DocWriter(title, insightSource)
+        DocWriter w = new DocWriter(title, insightSource, projectDir)
         w.writeCleanedUpBuildOutput(
                 '=== For the overridden dependency ===\n' +
                         "Tasks: ${tasksForOverrides.join(' ')}\n\n" +
@@ -99,6 +99,7 @@ class VerifyInsightOverrideLock extends AbstractVerifyInsight {
                         '\n\n=== For the control dependency ===\n' +
                         "Tasks: ${tasksForControl.join(' ')}\n\n" +
                         resultForControl.output)
+        w.writeProjectFiles()
 
         verifyOutputForControl(resultForControl.output)
 

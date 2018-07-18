@@ -1,3 +1,7 @@
+import org.apache.commons.io.FileUtils
+import org.apache.commons.io.filefilter.NameFileFilter
+import org.apache.commons.io.filefilter.NotFileFilter
+
 /**
  *
  *  Copyright 2018 Netflix, Inc.
@@ -18,23 +22,26 @@
 
 
 class DocWriter {
-    String title
-    String insightSource
-    File docs
+    private String title
+    private String insightSource
+    private File docs
 
-    DocWriter(String title, String insightSource) {
+    private File projectDir
+    private File depFolder
+
+    DocWriter(String title, String insightSource, File projectDir) {
+        this.projectDir = projectDir
         this.title = title
         this.insightSource = insightSource
 
         docs = new File("docs")
-        docs.delete()
         docs.mkdirs()
+
+        depFolder = new File(docs, title)
+        depFolder.mkdirs()
     }
 
-    def writeCleanedUpBuildOutput(String output) {
-        def depFolder = new File(docs, title)
-        depFolder.mkdirs()
-
+    void writeCleanedUpBuildOutput(String output) {
         def file = new File(depFolder, "${insightSource}.txt")
         file.delete()
         file.createNewFile()
@@ -48,6 +55,16 @@ class DocWriter {
 """.stripIndent()
     }
 
+    void writeProjectFiles() {
+        def destinationDir = new File(depFolder, insightSource)
+        destinationDir.deleteDir()
+        destinationDir.mkdirs()
+
+        FileFilter notGradleFiles = new NotFileFilter(new NameFileFilter('.gradle'))
+
+        FileUtils.copyDirectory(projectDir, destinationDir, notGradleFiles)
+    }
+
     def addAssertionToDoc(String message) {
         def depFolder = new File(docs, title)
         def file = new File(depFolder, "${insightSource}.txt")
@@ -55,7 +72,7 @@ class DocWriter {
         file << "- $message\n"
     }
 
-    def writeFooter(String first) {
+    void writeFooter(String first) {
         def depFolder = new File(docs, title)
         def file = new File(depFolder, "${insightSource}.txt")
 

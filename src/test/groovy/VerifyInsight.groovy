@@ -83,10 +83,12 @@ class VerifyInsight extends AbstractVerifyInsight {
         def result = runTasks(*tasks)
 
         then:
-        DocWriter w = new DocWriter(title, insightSource)
+        DocWriter w = new DocWriter(title, insightSource, projectDir)
         w.writeCleanedUpBuildOutput('=== For the dependency under test ===\n' +
                 "Tasks: ${tasks.join(' ')}\n\n" +
                 result.output)
+        w.writeProjectFiles()
+
         verifyOutput(result.output, dependencyHelper, dep, w)
         w.writeFooter('completed assertions')
 

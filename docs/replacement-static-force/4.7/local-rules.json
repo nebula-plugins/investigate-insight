@@ -1,0 +1,59 @@
+{
+  "replace" : [
+    {
+      "module" : "asm:asm",
+      "with" : "org.ow2.asm:asm",
+      "reason" : "The asm group id changed for 4.0 and later",
+      "author" : "Example Person <person@example.org>",
+      "date" : "2015-10-07T20:21:20.368Z"
+    }
+  ],
+  "substitute": [
+    {
+      "module" : "org.mockito:mockito-all",
+      "with" : "org.mockito:mockito-core:1.10.19",
+      "reason" : "mockito-all contains unrelocated shaded dependencies (hamcrest/objenesis)",
+      "author" : "Example Person <person@example.org>",
+      "date" : "2015-10-07T20:21:20.368Z"
+    }
+  ],
+  "deny": [
+    {
+      "module": "com.google.guava:guava:19.0-rc2",
+      "reason" : "Guava 19.0-rc2 is not permitted",
+      "author" : "Example Person <person@example.org>",
+      "date" : "2015-10-07T20:21:20.368Z"
+    },
+    {
+      "module": "com.sun.jersey:jersey-bundle",
+      "reason" : "jersey-bundle is a fat jar that includes non-relocated (shaded) third party classes, which can cause duplicated classes on the classpath. Please specify the jersey- libraries you need directly",
+      "author" : "Example Person <person@example.org>",
+      "date" : "2015-10-07T20:21:20.368Z"
+    }
+  ],
+  "reject": [
+    {
+      "module": "com.google.guava:guava:12.0",
+      "reason" : "Guava 12.0 significantly regressed LocalCache performance",
+      "author" : "Example Person <person@example.org>",
+      "date" : "2015-10-07T20:21:20.368Z"
+    }
+  ],
+  "align": [
+    {
+      "name": "alignJersey",
+      "group": "com.sun.jersey",
+      "reason": "Make sure jersey-core, jersey-server, etc. are aligned e.g. 1.19.1",
+      "author": "Example Person <person@example.org>",
+      "date": "2015-10-08T20:15:14.321Z"
+    }
+  ],
+  "exclude": [
+    {
+      "module": "io.netty:netty-all",
+      "reason": "Bundle dependencies are harmful, they do not conflict resolve with the non-bundle dependencies",
+      "author" : "Danny Thomas <dmthomas@gmail.com>",
+      "date" : "2015-10-07T20:21:20.368Z"
+    }
+  ]
+}

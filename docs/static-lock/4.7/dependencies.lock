@@ -1,0 +1,155 @@
+{
+    "compile": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "compileClasspath": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "default": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "runtime": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "runtimeClasspath": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testCompile": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testCompileClasspath": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testRuntime": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testRuntimeClasspath": {
+        "com.google.guava:guava": {
+            "locked": "13.0",
+            "requested": "13.0"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    }
+}

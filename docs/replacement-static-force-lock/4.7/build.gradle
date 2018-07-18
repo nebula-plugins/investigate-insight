@@ -1,0 +1,50 @@
+
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        jcenter()
+    }
+    dependencies {
+        
+classpath 'com.netflix.nebula:nebula-dependency-recommender:5.1.0'
+classpath 'com.netflix.nebula:gradle-resolution-rules-plugin:5.2.2'
+classpath 'com.netflix.nebula:gradle-dependency-lock-plugin:5.0.6'
+
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'nebula.dependency-lock'
+apply plugin: 'nebula.resolution-rules'
+apply plugin: 'nebula.dependency-recommender'
+
+repositories {
+    jcenter()
+}
+
+dependencyRecommendations {
+    propertiesFile file: file(getRootDir().getPath() + File.separator + 'dependency-recommendations.properties')
+}
+
+dependencies {
+    resolutionRules 'com.netflix.nebula:gradle-resolution-rules:latest.release'
+    resolutionRules files('local-rules.json') // mostly from https://github.com/nebula-plugins/gradle-resolution-rules-plugin/wiki/Example-Rules-JSON
+}
+        
+            dependencies {
+                compile 'org.slf4j:slf4j-api:1.7.25'
+                compile 'org.slf4j:slf4j-simple:1.7.25'
+                compile 'com.google.guava:guava:18.0'
+                compile 'com.google.collections:google-collections:1.0'
+            }
+            
+configurations.all {
+    resolutionStrategy {
+        force 'com.google.guava:guava:14.0.1'
+    }
+}
+
+            

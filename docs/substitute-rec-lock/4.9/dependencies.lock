@@ -1,0 +1,389 @@
+{
+    "compile": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "compileClasspath": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "default": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "runtime": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "runtimeClasspath": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testCompile": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testCompileClasspath": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testRuntime": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testRuntimeClasspath": {
+        "com.google.guava:guava": {
+            "locked": "18.0",
+            "requested": "18.0"
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.4.26",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.mockito:mockito-all": {
+            "project": true,
+            "requested": "1.8.0"
+        },
+        "org.mockito:mockito-core": {
+            "locked": "2.1.0",
+            "requested": "2.1.0"
+        },
+        "org.objenesis:objenesis": {
+            "locked": "2.4",
+            "transitive": [
+                "org.mockito:mockito-core"
+            ]
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    }
+}
