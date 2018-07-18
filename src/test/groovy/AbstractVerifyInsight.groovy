@@ -51,21 +51,15 @@ abstract class AbstractVerifyInsight extends TestKitSpecification {
         if (insightSource == plugins) {
             pluginClasspaths = """
                 classpath 'com.netflix.nebula:nebula-dependency-recommender:5.1.0'
-                classpath "com.netflix.nebula:gradle-resolution-rules-plugin:5.2.2"
-                classpath "com.netflix.nebula:gradle-dependency-lock-plugin:5.0.6"
+                classpath 'com.netflix.nebula:gradle-resolution-rules-plugin:5.2.2'
+                classpath 'com.netflix.nebula:gradle-dependency-lock-plugin:5.0.6'
                 """.stripIndent()
         } else {
             pluginClasspaths = """
-            classpath ('com.netflix.nebula:gradle-resolution-rules-plugin:6.0.0-rc.1') { 
-                force = true
-            }
-            classpath ('com.netflix.nebula:nebula-dependency-recommender:6.0.0-rc.1') {
-                force = true
-            }
-            classpath ('com.netflix.nebula:gradle-dependency-lock-plugin:6.0.0-rc.1') {
-                force = true
-            }
-            """.stripIndent()
+                classpath 'com.netflix.nebula:gradle-resolution-rules-plugin:6.0.1'
+                classpath 'com.netflix.nebula:nebula-dependency-recommender:6.0.0'
+                classpath 'com.netflix.nebula:gradle-dependency-lock-plugin:6.0.0'
+                """.stripIndent()
         }
 
         buildFile << """
@@ -75,6 +69,7 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
+        jcenter()
     }
     dependencies {
         ${pluginClasspaths}
@@ -108,9 +103,9 @@ import com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class MainDynamic {
+class Main {
     public static void main(String[] args) {
-        Logger log = LoggerFactory.getLogger(MainDynamic.class);
+        Logger log = LoggerFactory.getLogger(Main.class);
         log.info("Hello, " + ImmutableList.of("friend").get(0));
     }
 }
