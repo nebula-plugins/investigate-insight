@@ -19,6 +19,7 @@ We are testing the insight for dependencies with versions from...
 - Selection rules
     - A replacement rule
     - A substitution rule
+    - An exclude rule
     - An alignment rule
 
 #### Under test
@@ -47,6 +48,7 @@ find docs -type f | xargs tail -n +1
 ## Results
 
 #### Ordering
+- Exclude
 - Substitution, replacement
 - Lock
 - Alignment

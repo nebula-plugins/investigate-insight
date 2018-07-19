@@ -1,0 +1,14 @@
+=== For the dependency under test ===
+Tasks: dependencyInsight --dependency netty --warning-mode all
+
+
+> Task :dependencyInsight
+No dependencies matching given input were found in configuration ':compileClasspath'
+
+BUILD SUCCESSFUL
+1 actionable task: 1 executed
+
+=== Asserting on... ===
+- No dependencies matching given input were found in configuration [exclude]
+
+completed assertions

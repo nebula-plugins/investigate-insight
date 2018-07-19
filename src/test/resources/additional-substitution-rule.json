@@ -1,0 +1,16 @@
+{
+  "replace": [],
+  "substitute": [
+    {
+      "module": "io.netty:netty-all",
+      "with": "io.netty:netty-common:4.1.23.Final",
+      "reason": "Bundle dependencies are harmful, they do not conflict resolve with the non-bundle dependencies",
+      "author": "Example Person <person@example.org>",
+      "date": "2015-10-07T20:21:20.368Z"
+    }
+  ],
+  "deny": [],
+  "reject": [],
+  "align": [],
+  "exclude": []
+}

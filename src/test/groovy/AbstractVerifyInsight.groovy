@@ -137,6 +137,16 @@ class Main {
         lockFile << readFileFromClasspath("${dependencyName}-dependencies.lock")
     }
 
+    boolean needsAdditionalResolutionRuleFile(String dep, DependencyHelper dh) {
+        dep == 'netty' && dh.substituteWith != null
+    }
+
+    void createAdditionalResolutionRuleFile(String dep, DependencyHelper dh) {
+        def ruleFileName = 'additional-substitution-rule'
+        def localRules = new File(projectDir, 'additional-rules.json')
+        localRules << readFileFromClasspath("${ruleFileName}.json")
+    }
+
     private static String readFileFromClasspath(String filename) {
         Resources.toString(Resources.getResource(filename), StandardCharsets.UTF_8)
     }
@@ -151,4 +161,5 @@ class Main {
                 """.stripIndent()
         }
     }
+
 }
