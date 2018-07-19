@@ -1,0 +1,155 @@
+{
+    "compile": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "compileClasspath": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "default": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "runtime": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "runtimeClasspath": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testCompile": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testCompileClasspath": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testRuntime": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    },
+    "testRuntimeClasspath": {
+        "io.netty:netty-all": {
+            "locked": "4.1.15.FINAL",
+            "requested": "4.1.15.FINAL"
+        },
+        "org.slf4j:slf4j-api": {
+            "locked": "1.7.25",
+            "requested": "1.7.25",
+            "transitive": [
+                "org.slf4j:slf4j-simple"
+            ]
+        },
+        "org.slf4j:slf4j-simple": {
+            "locked": "1.7.25",
+            "requested": "1.7.25"
+        }
+    }
+}

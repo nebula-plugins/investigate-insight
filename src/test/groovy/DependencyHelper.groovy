@@ -31,6 +31,7 @@ class DependencyHelper {
 
     String replaceFrom
     String substituteWith
+    Boolean exclude
 
     String resolvedModuleIdentifier
 

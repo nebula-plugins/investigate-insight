@@ -39,9 +39,18 @@ class VerifyInsight extends AbstractVerifyInsight {
     static def mockitoRec = '1.9.5'
     static def substituteWith = 'org.mockito:mockito-core:1.10.19'
 
+    static def netty = 'netty'
+    static def nettyDependency = 'io.netty:netty-all'
+    static def nettyStatic = '4.1.20.FINAL'
+    static def nettyDynamic = '4.1.+'
+    static def nettyForce = '4.1.10.FINAL'
+    static def nettyLock = '4.1.15.FINAL'
+    static def nettyRec = '4.1.22.FINAL'
+
     public static
-    def lookupRequestedModuleIdentifier = ImmutableMap.of(guava, guavaDependency, mockito, mockitoDependency)
-    public static def lookupDynamicResolveVersion = ImmutableMap.of(guava, guavaStatic, mockito, mockitoStatic)
+    def lookupRequestedModuleIdentifier = ImmutableMap.of(guava, guavaDependency, mockito, mockitoDependency, netty, nettyDependency)
+    public static
+    def lookupDynamicResolveVersion = ImmutableMap.of(guava, guavaStatic, mockito, mockitoStatic, netty, nettyStatic)
 
     @Unroll
     def "#title - #insightSource"() {
@@ -62,6 +71,7 @@ class VerifyInsight extends AbstractVerifyInsight {
         dependencyHelper.requestedModuleIdentifier = dep
         dependencyHelper.replaceFrom = replaceFrom
         dependencyHelper.substituteWith = substitute
+        dependencyHelper.exclude = exclude
         dependencyHelper.lookupRequestedModuleIdentifier = lookupRequestedModuleIdentifier
 
         def version = dependencyHelper.findRequestedVersion() // static, dynamic, or recommended
@@ -93,100 +103,131 @@ ${createForceConfigurationIfNeeded(dep, forceVersion, lookupRequestedModuleIdent
         w.writeFooter('completed assertions')
 
         where:
-        insightSource | dep     | staticVersion | dynamicVersion | recVersion | forceVersion | lockVersion | replaceFrom    | substitute     | title
+        insightSource | dep     | staticVersion | dynamicVersion | recVersion | forceVersion | lockVersion | replaceFrom    | substitute     | exclude | title
 //        ===plugins insight===
 //        static
-        plugins       | guava   | guavaStatic   | null           | null       | null         | null        | null           | null           | 'static'
-        plugins       | guava   | guavaStatic   | null           | null       | guavaForce   | null        | null           | null           | 'static-force'
-        plugins       | guava   | guavaStatic   | null           | null       | guavaForce   | guavaLock   | null           | null           | 'static-force-lock'
-        plugins       | guava   | guavaStatic   | null           | null       | null         | guavaLock   | null           | null           | 'static-lock'
+        plugins       | guava   | guavaStatic   | null           | null       | null         | null        | null           | null           | null    | 'static'
+        plugins       | guava   | guavaStatic   | null           | null       | guavaForce   | null        | null           | null           | null    | 'static-force'
+        plugins       | guava   | guavaStatic   | null           | null       | guavaForce   | guavaLock   | null           | null           | null    | 'static-force-lock'
+        plugins       | guava   | guavaStatic   | null           | null       | null         | guavaLock   | null           | null           | null    | 'static-lock'
 //         dynamic
-        plugins       | guava   | null          | guavaDynamic   | null       | null         | null        | null           | null           | 'dynamic'
-        plugins       | guava   | null          | guavaDynamic   | null       | guavaForce   | null        | null           | null           | 'dynamic-force'
-        plugins       | guava   | null          | guavaDynamic   | null       | guavaForce   | guavaLock   | null           | null           | 'dynamic-force-lock'
-        plugins       | guava   | null          | guavaDynamic   | null       | null         | guavaLock   | null           | null           | 'dynamic-lock'
+        plugins       | guava   | null          | guavaDynamic   | null       | null         | null        | null           | null           | null    | 'dynamic'
+        plugins       | guava   | null          | guavaDynamic   | null       | guavaForce   | null        | null           | null           | null    | 'dynamic-force'
+        plugins       | guava   | null          | guavaDynamic   | null       | guavaForce   | guavaLock   | null           | null           | null    | 'dynamic-force-lock'
+        plugins       | guava   | null          | guavaDynamic   | null       | null         | guavaLock   | null           | null           | null    | 'dynamic-lock'
 //         recommendation
-        plugins       | guava   | null          | null           | guavaRec   | null         | null        | null           | null           | 'rec'
-        plugins       | guava   | null          | null           | guavaRec   | guavaForce   | null        | null           | null           | 'rec-force'
-        plugins       | guava   | null          | null           | guavaRec   | guavaForce   | guavaLock   | null           | null           | 'rec-force-lock'
-        plugins       | guava   | null          | null           | guavaRec   | null         | guavaLock   | null           | null           | 'rec-lock'
+        plugins       | guava   | null          | null           | guavaRec   | null         | null        | null           | null           | null    | 'rec'
+        plugins       | guava   | null          | null           | guavaRec   | guavaForce   | null        | null           | null           | null    | 'rec-force'
+        plugins       | guava   | null          | null           | guavaRec   | guavaForce   | guavaLock   | null           | null           | null    | 'rec-force-lock'
+        plugins       | guava   | null          | null           | guavaRec   | null         | guavaLock   | null           | null           | null    | 'rec-lock'
 //        replacement - static
-        plugins       | guava   | guavaStatic   | null           | null       | null         | null        | replaceFromDep | null           | 'replacement-static'
-        plugins       | guava   | guavaStatic   | null           | null       | guavaForce   | null        | replaceFromDep | null           | 'replacement-static-force'
-        plugins       | guava   | guavaStatic   | null           | null       | guavaForce   | guavaLock   | replaceFromDep | null           | 'replacement-static-force-lock'
-        plugins       | guava   | guavaStatic   | null           | null       | null         | guavaLock   | replaceFromDep | null           | 'replacement-static-lock'
+        plugins       | guava   | guavaStatic   | null           | null       | null         | null        | replaceFromDep | null           | null    | 'replacement-static'
+        plugins       | guava   | guavaStatic   | null           | null       | guavaForce   | null        | replaceFromDep | null           | null    | 'replacement-static-force'
+        plugins       | guava   | guavaStatic   | null           | null       | guavaForce   | guavaLock   | replaceFromDep | null           | null    | 'replacement-static-force-lock'
+        plugins       | guava   | guavaStatic   | null           | null       | null         | guavaLock   | replaceFromDep | null           | null    | 'replacement-static-lock'
 //        replacement - dynamic
-        plugins       | guava   | null          | guavaDynamic   | null       | null         | null        | replaceFromDep | null           | 'replacement-dynamic'
-        plugins       | guava   | null          | guavaDynamic   | null       | guavaForce   | null        | replaceFromDep | null           | 'replacement-dynamic-force'
-        plugins       | guava   | null          | guavaDynamic   | null       | guavaForce   | guavaLock   | replaceFromDep | null           | 'replacement-dynamic-force-lock'
-        plugins       | guava   | null          | guavaDynamic   | null       | null         | guavaLock   | replaceFromDep | null           | 'replacement-dynamic-lock'
+        plugins       | guava   | null          | guavaDynamic   | null       | null         | null        | replaceFromDep | null           | null    | 'replacement-dynamic'
+        plugins       | guava   | null          | guavaDynamic   | null       | guavaForce   | null        | replaceFromDep | null           | null    | 'replacement-dynamic-force'
+        plugins       | guava   | null          | guavaDynamic   | null       | guavaForce   | guavaLock   | replaceFromDep | null           | null    | 'replacement-dynamic-force-lock'
+        plugins       | guava   | null          | guavaDynamic   | null       | null         | guavaLock   | replaceFromDep | null           | null    | 'replacement-dynamic-lock'
 //        replacement - with recommendation
-        plugins       | guava   | null          | null           | guavaRec   | null         | null        | replaceFromDep | null           | 'replacement-rec'
-        plugins       | guava   | null          | null           | guavaRec   | guavaForce   | null        | replaceFromDep | null           | 'replacement-rec-force'
-        plugins       | guava   | null          | null           | guavaRec   | guavaForce   | guavaLock   | replaceFromDep | null           | 'replacement-rec-force-lock'
-        plugins       | guava   | null          | null           | guavaRec   | null         | guavaLock   | replaceFromDep | null           | 'replacement-rec-lock'
+        plugins       | guava   | null          | null           | guavaRec   | null         | null        | replaceFromDep | null           | null    | 'replacement-rec'
+        plugins       | guava   | null          | null           | guavaRec   | guavaForce   | null        | replaceFromDep | null           | null    | 'replacement-rec-force'
+        plugins       | guava   | null          | null           | guavaRec   | guavaForce   | guavaLock   | replaceFromDep | null           | null    | 'replacement-rec-force-lock'
+        plugins       | guava   | null          | null           | guavaRec   | null         | guavaLock   | replaceFromDep | null           | null    | 'replacement-rec-lock'
 //        substitution - static
-        plugins       | mockito | mockitoStatic | null           | null       | null         | null        | null           | substituteWith | 'substitute-static'
-        plugins       | mockito | mockitoStatic | null           | null       | mockitoForce | null        | null           | substituteWith | 'substitute-static-force'
-        plugins       | mockito | mockitoStatic | null           | null       | mockitoForce | mockitoLock | null           | substituteWith | 'substitute-static-force-lock'
-        plugins       | mockito | mockitoStatic | null           | null       | null         | mockitoLock | null           | substituteWith | 'substitute-static-lock'
+        plugins       | mockito | mockitoStatic | null           | null       | null         | null        | null           | substituteWith | null    | 'substitute-static'
+        plugins       | mockito | mockitoStatic | null           | null       | mockitoForce | null        | null           | substituteWith | null    | 'substitute-static-force'
+        plugins       | mockito | mockitoStatic | null           | null       | mockitoForce | mockitoLock | null           | substituteWith | null    | 'substitute-static-force-lock'
+        plugins       | mockito | mockitoStatic | null           | null       | null         | mockitoLock | null           | substituteWith | null    | 'substitute-static-lock'
 //        substitution - dynamic
-        plugins       | mockito | null          | mockitoDynamic | null       | null         | null        | null           | substituteWith | 'substitute-dynamic'
-        plugins       | mockito | null          | mockitoDynamic | null       | mockitoForce | null        | null           | substituteWith | 'substitute-dynamic-force'
-        plugins       | mockito | null          | mockitoDynamic | null       | mockitoForce | mockitoLock | null           | substituteWith | 'substitute-dynamic-force-lock'
-        plugins       | mockito | null          | mockitoDynamic | null       | null         | mockitoLock | null           | substituteWith | 'substitute-dynamic-lock'
+        plugins       | mockito | null          | mockitoDynamic | null       | null         | null        | null           | substituteWith | null    | 'substitute-dynamic'
+        plugins       | mockito | null          | mockitoDynamic | null       | mockitoForce | null        | null           | substituteWith | null    | 'substitute-dynamic-force'
+        plugins       | mockito | null          | mockitoDynamic | null       | mockitoForce | mockitoLock | null           | substituteWith | null    | 'substitute-dynamic-force-lock'
+        plugins       | mockito | null          | mockitoDynamic | null       | null         | mockitoLock | null           | substituteWith | null    | 'substitute-dynamic-lock'
 //        substitution - with recommendation
-        plugins       | mockito | null          | null           | mockitoRec | null         | null        | null           | substituteWith | 'substitute-rec'
-        plugins       | mockito | null          | null           | mockitoRec | mockitoForce | null        | null           | substituteWith | 'substitute-rec-force'
-        plugins       | mockito | null          | null           | mockitoRec | mockitoForce | mockitoLock | null           | substituteWith | 'substitute-rec-force-lock'
-        plugins       | mockito | null          | null           | mockitoRec | null         | mockitoLock | null           | substituteWith | 'substitute-rec-lock'
+        plugins       | mockito | null          | null           | mockitoRec | null         | null        | null           | substituteWith | null    | 'substitute-rec'
+        plugins       | mockito | null          | null           | mockitoRec | mockitoForce | null        | null           | substituteWith | null    | 'substitute-rec-force'
+        plugins       | mockito | null          | null           | mockitoRec | mockitoForce | mockitoLock | null           | substituteWith | null    | 'substitute-rec-force-lock'
+        plugins       | mockito | null          | null           | mockitoRec | null         | mockitoLock | null           | substituteWith | null    | 'substitute-rec-lock'
+//        exclude - static
+        plugins       | netty   | nettyStatic   | null           | null       | null         | null        | null           | null           | true    | 'exclude-static'
+        plugins       | netty   | nettyStatic   | null           | null       | nettyForce   | null        | null           | null           | true    | 'exclude-static-force'
+        plugins       | netty   | nettyStatic   | null           | null       | nettyForce   | nettyLock   | null           | null           | true    | 'exclude-static-force-lock'
+        plugins       | netty   | nettyStatic   | null           | null       | null         | nettyLock   | null           | null           | true    | 'exclude-static-lock'
+//        exclude - dynamic
+        plugins       | netty   | null          | nettyDynamic   | null       | null         | null        | null           | null           | true    | 'exclude-dynamic'
+        plugins       | netty   | null          | nettyDynamic   | null       | nettyForce   | null        | null           | null           | true    | 'exclude-dynamic-force'
+        plugins       | netty   | null          | nettyDynamic   | null       | nettyForce   | nettyLock   | null           | null           | true    | 'exclude-dynamic-force-lock'
+        plugins       | netty   | null          | nettyDynamic   | null       | null         | nettyLock   | null           | null           | true    | 'exclude-dynamic-lock'
+//        exclude - with recommendation
+        plugins       | netty   | null          | null           | nettyRec   | null         | null        | null           | null           | true    | 'exclude-rec'
+        plugins       | netty   | null          | null           | nettyRec   | nettyForce   | null        | null           | null           | true    | 'exclude-rec-force'
+        plugins       | netty   | null          | null           | nettyRec   | nettyForce   | nettyLock   | null           | null           | true    | 'exclude-rec-force-lock'
+        plugins       | netty   | null          | null           | nettyRec   | null         | nettyLock   | null           | null           | true    | 'exclude-rec-lock'
 
 //        ===core insight===
 //        static
-        core          | guava   | guavaStatic   | null           | null       | null         | null        | null           | null           | 'static'
-        core          | guava   | guavaStatic   | null           | null       | guavaForce   | null        | null           | null           | 'static-force'
-        core          | guava   | guavaStatic   | null           | null       | guavaForce   | guavaLock   | null           | null           | 'static-force-lock'
-        core          | guava   | guavaStatic   | null           | null       | null         | guavaLock   | null           | null           | 'static-lock'
+        core          | guava   | guavaStatic   | null           | null       | null         | null        | null           | null           | null    | 'static'
+        core          | guava   | guavaStatic   | null           | null       | guavaForce   | null        | null           | null           | null    | 'static-force'
+        core          | guava   | guavaStatic   | null           | null       | guavaForce   | guavaLock   | null           | null           | null    | 'static-force-lock'
+        core          | guava   | guavaStatic   | null           | null       | null         | guavaLock   | null           | null           | null    | 'static-lock'
 //         dynamic
-        core          | guava   | null          | guavaDynamic   | null       | null         | null        | null           | null           | 'dynamic'
-        core          | guava   | null          | guavaDynamic   | null       | guavaForce   | null        | null           | null           | 'dynamic-force'
-        core          | guava   | null          | guavaDynamic   | null       | guavaForce   | guavaLock   | null           | null           | 'dynamic-force-lock'
-        core          | guava   | null          | guavaDynamic   | null       | null         | guavaLock   | null           | null           | 'dynamic-lock'
+        core          | guava   | null          | guavaDynamic   | null       | null         | null        | null           | null           | null    | 'dynamic'
+        core          | guava   | null          | guavaDynamic   | null       | guavaForce   | null        | null           | null           | null    | 'dynamic-force'
+        core          | guava   | null          | guavaDynamic   | null       | guavaForce   | guavaLock   | null           | null           | null    | 'dynamic-force-lock'
+        core          | guava   | null          | guavaDynamic   | null       | null         | guavaLock   | null           | null           | null    | 'dynamic-lock'
 //         recommendation
-        core          | guava   | null          | null           | guavaRec   | null         | null        | null           | null           | 'rec'
-        core          | guava   | null          | null           | guavaRec   | guavaForce   | null        | null           | null           | 'rec-force'
-        core          | guava   | null          | null           | guavaRec   | guavaForce   | guavaLock   | null           | null           | 'rec-force-lock'
-        core          | guava   | null          | null           | guavaRec   | null         | guavaLock   | null           | null           | 'rec-lock'
+        core          | guava   | null          | null           | guavaRec   | null         | null        | null           | null           | null    | 'rec'
+        core          | guava   | null          | null           | guavaRec   | guavaForce   | null        | null           | null           | null    | 'rec-force'
+        core          | guava   | null          | null           | guavaRec   | guavaForce   | guavaLock   | null           | null           | null    | 'rec-force-lock'
+        core          | guava   | null          | null           | guavaRec   | null         | guavaLock   | null           | null           | null    | 'rec-lock'
 //        replacement - static
-        core          | guava   | guavaStatic   | null           | null       | null         | null        | replaceFromDep | null           | 'replacement-static'
-        core          | guava   | guavaStatic   | null           | null       | guavaForce   | null        | replaceFromDep | null           | 'replacement-static-force'
-        core          | guava   | guavaStatic   | null           | null       | guavaForce   | guavaLock   | replaceFromDep | null           | 'replacement-static-force-lock'
-        core          | guava   | guavaStatic   | null           | null       | null         | guavaLock   | replaceFromDep | null           | 'replacement-static-lock'
+        core          | guava   | guavaStatic   | null           | null       | null         | null        | replaceFromDep | null           | null    | 'replacement-static'
+        core          | guava   | guavaStatic   | null           | null       | guavaForce   | null        | replaceFromDep | null           | null    | 'replacement-static-force'
+        core          | guava   | guavaStatic   | null           | null       | guavaForce   | guavaLock   | replaceFromDep | null           | null    | 'replacement-static-force-lock'
+        core          | guava   | guavaStatic   | null           | null       | null         | guavaLock   | replaceFromDep | null           | null    | 'replacement-static-lock'
 //        replacement - dynamic
-        core          | guava   | null          | guavaDynamic   | null       | null         | null        | replaceFromDep | null           | 'replacement-dynamic'
-        core          | guava   | null          | guavaDynamic   | null       | guavaForce   | null        | replaceFromDep | null           | 'replacement-dynamic-force'
-        core          | guava   | null          | guavaDynamic   | null       | guavaForce   | guavaLock   | replaceFromDep | null           | 'replacement-dynamic-force-lock'
-        core          | guava   | null          | guavaDynamic   | null       | null         | guavaLock   | replaceFromDep | null           | 'replacement-dynamic-lock'
+        core          | guava   | null          | guavaDynamic   | null       | null         | null        | replaceFromDep | null           | null    | 'replacement-dynamic'
+        core          | guava   | null          | guavaDynamic   | null       | guavaForce   | null        | replaceFromDep | null           | null    | 'replacement-dynamic-force'
+        core          | guava   | null          | guavaDynamic   | null       | guavaForce   | guavaLock   | replaceFromDep | null           | null    | 'replacement-dynamic-force-lock'
+        core          | guava   | null          | guavaDynamic   | null       | null         | guavaLock   | replaceFromDep | null           | null    | 'replacement-dynamic-lock'
 //        replacement - with recommendation
-        core          | guava   | null          | null           | guavaRec   | null         | null        | replaceFromDep | null           | 'replacement-rec'
-        core          | guava   | null          | null           | guavaRec   | guavaForce   | null        | replaceFromDep | null           | 'replacement-rec-force'
-        core          | guava   | null          | null           | guavaRec   | guavaForce   | guavaLock   | replaceFromDep | null           | 'replacement-rec-force-lock'
-        core          | guava   | null          | null           | guavaRec   | null         | guavaLock   | replaceFromDep | null           | 'replacement-rec-lock'
+        core          | guava   | null          | null           | guavaRec   | null         | null        | replaceFromDep | null           | null    | 'replacement-rec'
+        core          | guava   | null          | null           | guavaRec   | guavaForce   | null        | replaceFromDep | null           | null    | 'replacement-rec-force'
+        core          | guava   | null          | null           | guavaRec   | guavaForce   | guavaLock   | replaceFromDep | null           | null    | 'replacement-rec-force-lock'
+        core          | guava   | null          | null           | guavaRec   | null         | guavaLock   | replaceFromDep | null           | null    | 'replacement-rec-lock'
 //        substitution - static
-        core          | mockito | mockitoStatic | null           | null       | null         | null        | null           | substituteWith | 'substitute-static'
-        core          | mockito | mockitoStatic | null           | null       | mockitoForce | null        | null           | substituteWith | 'substitute-static-force'
-        core          | mockito | mockitoStatic | null           | null       | mockitoForce | mockitoLock | null           | substituteWith | 'substitute-static-force-lock'
-        core          | mockito | mockitoStatic | null           | null       | null         | mockitoLock | null           | substituteWith | 'substitute-static-lock'
+        core          | mockito | mockitoStatic | null           | null       | null         | null        | null           | substituteWith | null    | 'substitute-static'
+        core          | mockito | mockitoStatic | null           | null       | mockitoForce | null        | null           | substituteWith | null    | 'substitute-static-force'
+        core          | mockito | mockitoStatic | null           | null       | mockitoForce | mockitoLock | null           | substituteWith | null    | 'substitute-static-force-lock'
+        core          | mockito | mockitoStatic | null           | null       | null         | mockitoLock | null           | substituteWith | null    | 'substitute-static-lock'
 //        substitution - dynamic
-        core          | mockito | null          | mockitoDynamic | null       | null         | null        | null           | substituteWith | 'substitute-dynamic'
-        core          | mockito | null          | mockitoDynamic | null       | mockitoForce | null        | null           | substituteWith | 'substitute-dynamic-force'
-        core          | mockito | null          | mockitoDynamic | null       | mockitoForce | mockitoLock | null           | substituteWith | 'substitute-dynamic-force-lock'
-        core          | mockito | null          | mockitoDynamic | null       | null         | mockitoLock | null           | substituteWith | 'substitute-dynamic-lock'
+        core          | mockito | null          | mockitoDynamic | null       | null         | null        | null           | substituteWith | null    | 'substitute-dynamic'
+        core          | mockito | null          | mockitoDynamic | null       | mockitoForce | null        | null           | substituteWith | null    | 'substitute-dynamic-force'
+        core          | mockito | null          | mockitoDynamic | null       | mockitoForce | mockitoLock | null           | substituteWith | null    | 'substitute-dynamic-force-lock'
+        core          | mockito | null          | mockitoDynamic | null       | null         | mockitoLock | null           | substituteWith | null    | 'substitute-dynamic-lock'
 //        substitution - with recommendation
-        core          | mockito | null          | null           | mockitoRec | null         | null        | null           | substituteWith | 'substitute-rec'
-        core          | mockito | null          | null           | mockitoRec | mockitoForce | null        | null           | substituteWith | 'substitute-rec-force'
-        core          | mockito | null          | null           | mockitoRec | mockitoForce | mockitoLock | null           | substituteWith | 'substitute-rec-force-lock'
-        core          | mockito | null          | null           | mockitoRec | null         | mockitoLock | null           | substituteWith | 'substitute-rec-lock'
+        core          | mockito | null          | null           | mockitoRec | null         | null        | null           | substituteWith | null    | 'substitute-rec'
+        core          | mockito | null          | null           | mockitoRec | mockitoForce | null        | null           | substituteWith | null    | 'substitute-rec-force'
+        core          | mockito | null          | null           | mockitoRec | mockitoForce | mockitoLock | null           | substituteWith | null    | 'substitute-rec-force-lock'
+        core          | mockito | null          | null           | mockitoRec | null         | mockitoLock | null           | substituteWith | null    | 'substitute-rec-lock'
+//        exclude - static
+        core          | netty   | nettyStatic   | null           | null       | null         | null        | null           | null           | true    | 'exclude-static'
+        core          | netty   | nettyStatic   | null           | null       | nettyForce   | null        | null           | null           | true    | 'exclude-static-force'
+        core          | netty   | nettyStatic   | null           | null       | nettyForce   | nettyLock   | null           | null           | true    | 'exclude-static-force-lock'
+        core          | netty   | nettyStatic   | null           | null       | null         | nettyLock   | null           | null           | true    | 'exclude-static-lock'
+//        exclude - dynamic
+        core          | netty   | null          | nettyDynamic   | null       | null         | null        | null           | null           | true    | 'exclude-dynamic'
+        core          | netty   | null          | nettyDynamic   | null       | nettyForce   | null        | null           | null           | true    | 'exclude-dynamic-force'
+        core          | netty   | null          | nettyDynamic   | null       | nettyForce   | nettyLock   | null           | null           | true    | 'exclude-dynamic-force-lock'
+        core          | netty   | null          | nettyDynamic   | null       | null         | nettyLock   | null           | null           | true    | 'exclude-dynamic-lock'
+//        exclude - with recommendation
+        core          | netty   | null          | null           | nettyRec   | null         | null        | null           | null           | true    | 'exclude-rec'
+        core          | netty   | null          | null           | nettyRec   | nettyForce   | null        | null           | null           | true    | 'exclude-rec-force'
+        core          | netty   | null          | null           | nettyRec   | nettyForce   | nettyLock   | null           | null           | true    | 'exclude-rec-force-lock'
+        core          | netty   | null          | null           | nettyRec   | null         | nettyLock   | null           | null           | true    | 'exclude-rec-lock'
+
     }
 
     private static void verifyOutput(String output, DependencyHelper dh, String dep, DocWriter w) {
@@ -228,6 +269,15 @@ ${createForceConfigurationIfNeeded(dep, forceVersion, lookupRequestedModuleIdent
             assert output.findAll { endResultRegex }.size() > 0
 
             return // if substitution occurs, stop checking here
+        }
+
+        if (dh.exclude != null) {
+            // TODO: case with substitution and exclude
+            def expectedOutput = 'No dependencies matching given input were found in configuration'
+            w.addAssertionToDoc("$expectedOutput [exclude]")
+            assert output.contains(expectedOutput)
+
+            return // if exclude occurs, stop checking here
         }
 
         if (dh.lockVersion != null) {
